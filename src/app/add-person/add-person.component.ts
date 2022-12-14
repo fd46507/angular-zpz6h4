@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from './person';
 import { PersonService } from './person.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-person',
@@ -15,7 +16,8 @@ export class AddPersonComponent implements OnInit {
   street?: string;
   postCode?: string;
   person_service: PersonService = new PersonService();
-  constructor() {}
+
+  constructor(private router: Router) {}
 
   addPerson() {
     let newPerson: Person = new Person();
@@ -26,6 +28,8 @@ export class AddPersonComponent implements OnInit {
     newPerson.address['street'] = this.street;
     newPerson.address['postCode'] = this.postCode;
     this.person_service.saveToLocalStorage(newPerson);
+    // this.person_service.getLocalStorage();
+    this.router.navigate(['/list']);
   }
 
   ngOnInit() {}

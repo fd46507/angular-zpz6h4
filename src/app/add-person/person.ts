@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 export interface PersonInterface {
   firstName?: string;
@@ -17,7 +17,11 @@ export type Address = {
   postCode?: string;
 };
 
+@Component({
+  template: '',
+})
 export class Person implements OnInit, PersonInterface {
+  id?: number;
   firstName?: string;
   familyName?: string;
   age?: number;

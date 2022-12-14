@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PersonService } from '../add-person/person.service';
 
 @Component({
   selector: 'app-list',
@@ -9,13 +11,25 @@ export class ListComponent implements OnInit {
   name: string = '';
   li_id: number = 0;
   components: Array<string> = [];
+  personService: PersonService = new PersonService();
 
-  constructor() {}
+  constructor(protected router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.addPeopleFromLocalStorage();
+  }
 
-  addComponent(newComponent: string) {
-    this.components.push(newComponent);
+  addPeopleFromLocalStorage() {
+    let people = this.personService.getLocalStorage();
+    let ol = document.getElementById('lista');
+    let li = document.createElement('li');
+    for (let i = 0; i < people.length; i++) {
+      li.innerHTML = this.components[this.li_id] + ' ';
+    }
+  }
+
+  addPerson() {
+    this.components.push('cyrk');
     let ul = document.getElementById('lista');
     let li = document.createElement('li');
     li.innerHTML = this.components[this.li_id] + ' ';
