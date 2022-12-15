@@ -8,9 +8,6 @@ import { PersonService } from '../add-person/person.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  name: string = '';
-  li_id: number = 0;
-  components: Array<string> = [];
   personService: PersonService = new PersonService();
 
   constructor(protected router: Router) {}
