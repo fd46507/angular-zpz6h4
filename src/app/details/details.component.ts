@@ -32,8 +32,4 @@ export class DetailsComponent implements OnInit {
     this.street = person.address['street'];
     this.zipCode = person.address['postCode'];
   }
-
-  public goHome() {
-    this.router.navigate(['/details', 2]);
-  }
 }
